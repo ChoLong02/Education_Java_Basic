@@ -20,14 +20,20 @@ public class IfElse02 {
 		}
 		
 		// A+: 100~96 / A: 95~90
-		// B+: 89~96 / B: 85~80
-		// C+: 79~96 / C: 75~70
+		// B+: 89~86 / B: 85~80
+		// C+: 79~76 / C: 75~70
 		// D+: 69~66 / D: 65~60
 		// 60점 미만 F등급
 		// 파트2: 학점 등급 매기는 부분
 		String grade = ""; // 학점 등급
 		if(score >= 90 && score <= 100) {
-			grade = "A";
+			// 90~100점
+			if(score >= 96) { // 96, 97, 98, 99, 100
+				grade = "A+";
+			} else { // 95, 94, 93, 92, 91, 90
+				grade = "A";
+			}
+			
 		} else if(score >= 80 && score < 90) {
 			grade = "B";
 		} else if(score >= 70 && score < 80) {
