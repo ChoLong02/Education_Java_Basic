@@ -47,8 +47,6 @@ public class ArrayTest01 {
 		for(int i = 0; i < arrName.length; i++) {
 			System.out.println(arrName[i]);
 		}
-		
-		
 	}
 }
 
