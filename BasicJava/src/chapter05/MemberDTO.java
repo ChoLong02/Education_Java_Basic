@@ -8,17 +8,17 @@ public class MemberDTO {
 	// DTO의 정속 4가지 기능!!
 	// 1.가방의 포켓을 정의!(가방에 넣을 수 있는 값을 정의)
 	// 2.가방에 값을 담는 기능(생성자, 오버로딩)
-	// 3.값을 숨기는 기능(보안)
+	// 3.값을 숨기는 기능(보안) Getter()&Setter()
 	// 4.가방에 담겨있는 값을 보여주는 기능
 	
 	// 1) 가방 포켓을 정의(7칸) 
-	String id; // admin
-	String pw; // 1234
-	int age;
-	String name;
-	String email;
-	String phone;
-	String address;
+	private String id; // admin
+	private String pw; // 1234
+	private int age;
+	private String name;
+	private String email;
+	private String phone;
+	private String address;
 	
 	// 2) 가방에 담는 기능
 	//   - 디폴트 생성자
@@ -59,21 +59,73 @@ public class MemberDTO {
 		super();
 		this.id = id;
 		this.pw = pw;
-	} 
-	
-	
+	}
+
+
+	// 3번 캡슐화(은닉) Getter() & Setter()
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPw() {
+		return pw;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// 4번 DTO에 담겨 있는 모든 값을 출력하는 기능
+	@Override
+	public String toString() {
+		return "MemberDTO [id=" + id + ", pw=" + pw + ", age=" + age + ", name=" + name + ", email=" + email
+				+ ", phone=" + phone + ", address=" + address + "]";
+	} 
 }
 
 
