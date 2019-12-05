@@ -18,12 +18,31 @@ public class Parking {
 	
 	// 2.주차타워 입고
 	public void inParking(int car) {
+		// 차량입고 비즈니스 로직
+		// 1.주차공간이 여유가 있는지 체크!
+		//   full: 다른 타워를 이용하세요~끝
+		//   ok: 2번으로 넘어감
+		// 2.차량번호 중복 체크
+		//   중복: 차량번호를 다시 입력해주세요~끝
+		//   ok: 3번으로 넘어감
+		// 3.주차타워에 차량을 입고!
+		//   ok: 입고완료!, 주차현황 출력!
+		
 		// 현재 주차타워에 빈공간이 없는 경우
 		if(carCnt == space.length) { // 설명하기!!!!!!!!
 			System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
 			System.out.println("▒▒ 공간이 부족합니다. 2번타워를 이용해주세요.");
 			return; // 메서드 실행종료!
 		}
+		
+		// 중복차량유무 체크!
+		// int flag = searchCar(car);
+		if(searchCar(car)) { //중복차량
+			System.out.println("▒▒ 이미 주차중인 차량번호입니다.");
+			System.out.println("▒▒ 차량번호를 확인하시고 다시 입고해주세요.");
+			return;
+		}
+		
 		// 주차공간을 순회하면서 비어있는(입고 할 공간)을 찾음
 		for (int i = 0; i < space.length; i++) {
 			// 비어있는 공간을 찾음(값이 0이면 비어있음)
@@ -60,6 +79,17 @@ public class Parking {
 		// 입력한 차량번호가 해당 주차타워에 없음!!
 		System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
 		System.out.println("▒▒ 없는 차량번호 입니다. 다시 입력해주세요.");
+	}
+	
+	// 4.검색: 현재차량번호 기존에 등록된 차량번호 중복체크
+	public boolean searchCar(int car) {
+		boolean flag = false; // 중복유무 판별(0:정상,1:중복)
+		for (int i = 0; i < space.length; i++) {
+			if(space[i] == car) {
+				flag = true; // 차량번호 중복!!
+			}
+		}
+		return flag; // 중복유무 return값으로 전달!
 	}
 }
 

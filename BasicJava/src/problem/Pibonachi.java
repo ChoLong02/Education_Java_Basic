@@ -9,7 +9,7 @@ public class Pibonachi {
 		System.out.println("▒▒ 피보나치 수열 출력 Ver1.2");
 		System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
 		System.out.print("▒▒ Depth>> ");
-		int depth = sc.nextInt();
+		int depth = sc.nextInt(); // 피보나치의 깊이(반복횟수) 
 		 
 		int front = 1;  // 첫번째 항
 		int end = 1;    // 두번째 항

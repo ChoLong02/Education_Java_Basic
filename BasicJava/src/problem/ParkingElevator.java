@@ -2,7 +2,7 @@ package problem;
 
 import java.util.Scanner;
 
-public class ParkingElevator {
+public class ParkingElevator { 
 	public static void main(String[] args) {
 		int[] space = new int[5]; // 0으로 자동(JAVA) 초기화
 		int carCnt = 0;
