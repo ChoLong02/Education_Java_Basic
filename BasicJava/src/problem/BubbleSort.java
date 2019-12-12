@@ -2,7 +2,7 @@ package problem;
 
 import java.util.Scanner;
 
-public class BubbleSort {
+public class BubbleSort { 
 	static int[] data = new int[5];
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -27,7 +27,7 @@ public class BubbleSort {
 		int temp = 0;
 		for(int i = 0 ; i < data.length ; i ++) { //버블 정렬
 			for(int j = 0 ; j < data.length -i -1 ; j ++) {
-				if(data[j]>data[j+1]) {
+				if(data[j]>data[j+1])   {
 					temp = data[j];
 					data[j] = data[j+1];
 					data[j+1] = temp;
