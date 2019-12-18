@@ -8,7 +8,7 @@
  *2019.12.12   초롱이                     최초작성
  ********************************************* 
  */
-package jdbc;
+package problem.DDEnter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,9 +32,7 @@ public class DBManager {
 		conn = null;
 		if(conn == null) {
 			try {
-				// 1.드라이버 로드
 				Class.forName(DRIVER);
-				// 2.Connection
 				conn = DriverManager.getConnection(URL, USER, PASS);
 			} catch (Exception e) {
 				e.printStackTrace();
