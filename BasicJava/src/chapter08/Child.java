@@ -1,19 +1,17 @@
 package chapter08;
 
 // 자식 클래스
-public class Child extends Parent{
-	
-	// @은 JAVA가 실행할 때 표지판
-	@Override
-	public int sum(int a, int b) {
-		super.sum(2, 3); // 부모의 sum() 메서드
-		System.out.println("합: " + (a+b));
-		return super.sum(a, b);
-	}
-	
-	// 메서드 재정의(오버라이딩)
-	// : 부모클래스의 메서드를 그대로 사용하는게 아니고
-	//   내 입맛에 맞게 바꾸어 사용하는 것!
-	
-	
+public class Child extends Parent {
+    // 자식 클래스(서브 클래스)
+    public Child() {
+          super("박선미"); // 부모 클래스의 객체 생성
+          // 부모 클래스 객체 생성자 호출을 위해 자바에서 자동으로  만들어준다. 맨 위에 와야함!
+          // 생성자를 호출해 사용해줌.
+          // super() 기본생성자일 경우에만 생략가능
+          // 일반생성자는 매개변수에 값이 필요하기 때문에 JAVA에서  자동으로 만들 수 없음
+          // 객체생성(기본생성자)
+          // 객체생성과 동시에 초기화(기본생성자, 일반생성자)
+          // 객체생성과 동시에 메서드 호출, 실행(기본생성자,  일반생성자)
+          System.out.println("자식 클래스의 생성자입니다.");
+    }
 }

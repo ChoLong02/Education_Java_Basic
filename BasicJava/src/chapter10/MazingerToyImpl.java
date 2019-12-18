@@ -5,12 +5,12 @@ public class MazingerToyImpl implements IMissile, IMoveArmLeg{
 	public MazingerToyImpl() {
 		System.out.println("마징가입니다.");
 		canMissile();
-		canMoverArmLeg();
+		canMoveArmLeg();
 		System.out.println("========================");
 	}
 	
 	@Override
-	public void canMoverArmLeg() {
+	public void canMoveArmLeg() {
 		System.out.println("마징가 팔다리 움직이기!!!");
 	}
 	@Override

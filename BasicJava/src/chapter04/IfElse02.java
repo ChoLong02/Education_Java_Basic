@@ -4,47 +4,42 @@ import java.util.Scanner;
 
 public class IfElse02 {
 	public static void main(String[] args) {
-		// 학점 계산 프로그램
-		Scanner sc = new Scanner(System.in);
-		int score = 0;
-		// 파트1: 학생점수 입력받는 부분
-		while(true) {
-			System.out.print("학생점수>>");
-			score = sc.nextInt();
-			
-			if(score > 100 || score < 0) {
-				System.out.println("0~100: 다시 입력");
-			} else {
-				break; // 0~100 들어온 경우 반복문 빠져나감
-			}
-		}
-		
-		// A+: 100~96 / A: 95~90
-		// B+: 89~86 / B: 85~80
-		// C+: 79~76 / C: 75~70
-		// D+: 69~66 / D: 65~60
-		// 60점 미만 F등급
-		// 파트2: 학점 등급 매기는 부분
-		String grade = ""; // 학점 등급
-		if(score >= 90 && score <= 100) {
-			// 90~100점
-			if(score >= 96) { // 96, 97, 98, 99, 100
-				grade = "A+";
-			} else { // 95, 94, 93, 92, 91, 90
-				grade = "A";
-			}
-			
-		} else if(score >= 80 && score < 90) {
-			grade = "B";
-		} else if(score >= 70 && score < 80) {
-			grade = "C";
-		} else if(score >= 60 && score < 70) {
-			grade = "D";
-		} else if(score < 60 && score >= 0) {
-			grade = "F";
-		} else {
-			System.out.println("0~100사이의 값을 입력해주세요.");
-		}
-		System.out.println("당신은 " + grade + "학점입니다.");
+        
+        // A : 100 ~ 91
+        // B : 90 ~ 81
+        // C : 80 ~ 71
+        // D : 70 ~ 61
+        // F : 60이하
+        // 이름, 점수, 학점 만들기
+        
+        String name = "박선미"; // 이름
+        int score = 85; // 점수
+        String grade = ""; // 학점
+        int flag = 0;
+        
+        if(score > 100 || score <0) {
+             System.out.println("잘못 입력하셨습니다.");
+             flag = 1;
+        } else if((100 >= score) && (score >= 91)) { // 1번
+             // 1번의 조건이 참이면 실행 됨
+             grade = "A";
+        } else if(score >= 81) {
+             grade = "B";
+        } else if(score >= 71) {
+             grade = "C";
+        } else if(score >= 61) {
+             grade = "D";
+        } else {
+             grade = "F";
+             // 위의 조건들이 모두 false일 때 실행 됨
+        }
+        
+        // if문
+        // if~else문
+        // if~elseif문
+        // if~elseif~else문
+        if(flag == 0) {
+        System.out.println(name + "학생의 점수는 " + score +  "점으로 " + grade + "학점입니다.");
+        }
 	}
 }
