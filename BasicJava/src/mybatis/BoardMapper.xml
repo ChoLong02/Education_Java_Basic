@@ -1,38 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.BoardMapper.xml">
-	<select id="selBank" resultType="problem.bank.BankDTO">
-		SELECT * FROM tbl_bank
-		ORDER BY bno
-	</select>
 	
-	<select id="selectAccount" resultType="problem.bank.BankDTO">
-		SELECT * FROM tbl_bank
-		WHERE bno = #{bno} AND pw = #{pw} 
-	</select>
-	
-	<insert id="insertBank" parameterType="problem.bank.BankDTO">
-		INSERT INTO tbl_bank(bno, bname, pw)
-		VALUES(seq_bank.NEXTVAL, #{bname}, #{pw})
-	</insert>
-	
-	<select id="searchAccount" resultType="problem.bank.BankDTO">
-		SELECT * FROM tbl_bank
-		WHERE bno = #{size}
-	</select>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
