@@ -1,5 +1,6 @@
 package problem.bank;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -75,17 +76,104 @@ public class BankDAO {
 		}
 	}
 	
-	public void searchAccount(int size) {
-		sqlSession = sqlSessionFactory.openSession();
+	// 계좌해지
+	public void deleteAccount(int bno, String pw) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("bno", bno);
+		map.put("pw", pw);
+		
 		try {
-			BankDTO bDto = sqlSession.selectOne("searchAccount", size);
+			result = sqlSession.delete("deleteAccount", map);
 			
-			System.out.println(bDto.toString());
+			if(result > 0) {
+				System.out.println("■■ "+bno+"계좌를 해지하였습니다.");
+			} else {
+				System.out.println("■■ 계좌해지에 실패하였습니다. 관리자에게 문의해주세요.");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			sqlSession.close();
 		}
+	}
+	
+	// 입금
+	public void plusMoney(int bno, int money) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("bno", bno);
+		map.put("money", money);
+		map.put("flag", 1); // 동적쿼리(입금 or 출금 유무)
+		try {
+			result = sqlSession.update("changeMoney", map);
+			if(result > 0) {
+				System.out.println("■■ 입금성공하였습니다.");
+				System.out.println("■■ 현재계좌잔액은 " + balanceMoney(bno) +"입니다.");
+			} else {
+				System.out.println("■■ 입금에 실패하였습니다. 관리자에게 문의해주세요.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	// 출금
+	public void minusMoney(int bno, int money) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("bno", bno);
+		map.put("money", money);
+		map.put("flag", 0);
+		try {
+			result = sqlSession.update("changeMoney", map);
+			if(result > 0) {
+				System.out.println("■■ "+money+" 출금성공하였습니다.");
+				System.out.println("■■ 현재계좌잔액은 " + balanceMoney(bno) +"입니다.");
+			} else {
+				System.out.println("■■ 출금에 실패하였습니다. 관리자에게 문의해주세요.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	// 계좌 잔액 조회
+	public int balanceMoney(int bno) {
+		sqlSession = sqlSessionFactory.openSession();
+		int money = 0;
+		try {
+			money = sqlSession.selectOne("balanceMoney", bno);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return money;
+	}
+	
+	public boolean checkUser(int bno, String pw) {
+		boolean flag = false;
+		sqlSession = sqlSessionFactory.openSession();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("bno", bno);
+		map.put("pw", pw);
+		try {
+			result = sqlSession.selectOne("checkUser", map);
+			if(result > 0) {
+				flag = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return flag;
 	}
 }
 
