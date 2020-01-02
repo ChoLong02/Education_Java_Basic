@@ -22,6 +22,21 @@ public class BoardDTO {
 		this.regdate = regdate;
 	}
 
+	public BoardDTO(String title, String content, String writer) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+	}
+
+	public BoardDTO(int bno, String title, String content, String writer) {
+		super();
+		this.bno = bno;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+	}
+
 	public int getBno() {
 		return bno;
 	}
