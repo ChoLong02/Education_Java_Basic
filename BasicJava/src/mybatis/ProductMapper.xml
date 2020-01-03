@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pdt">
+	<select id="already" resultType="Integer">
+		SELECT COUNT(*) FROM tbl_product
+		WHERE pname = #{pname}
+	</select>
+	
+	<insert id="insert" parameterType="ProductDTO">
+		INSERT INTO tbl_product(pno, pname, company, price, cnt)
+		VALUES(seq_product.NEXTVAL, #{pname}, #{company}, #{price}, #{cnt})
+	</insert>
+	
+	<update id="cntplus" parameterType="HashMap">
+		UPDATE tbl_product
+		SET cnt = cnt + #{cnt}
+		WHERE pname = #{pname}
+	</update>
+</mapper>

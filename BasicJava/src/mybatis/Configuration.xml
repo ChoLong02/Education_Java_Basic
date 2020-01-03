@@ -6,16 +6,17 @@
   
   <typeAliases>
   	<typeAlias alias="BoardDTO" type="problem.DDBoard.BoardDTO"/>
+  	<typeAlias alias="ProductDTO" type="marcket.ProductDTO"/>
   </typeAliases>
 
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
-        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"/>
-        <property name="username" value="java"/>
-        <property name="password" value="1234"/>
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
       </dataSource>
     </environment>
   </environments>
@@ -23,6 +24,7 @@
     <mapper resource="mybatis/BankMapper.xml"/>
     <mapper resource="mybatis/BoardMapper.xml"/>
     <mapper resource="mybatis/MemberMapper.xml"/>
+    <mapper resource="mybatis/ProductMapper.xml"/>
   </mappers>
 </configuration>
 
