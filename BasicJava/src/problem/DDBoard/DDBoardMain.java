@@ -25,7 +25,8 @@ public class DDBoardMain {
 			System.out.println("■□ 6.게시글 정렬");
 			System.out.println("■□ 7.상세 게시글");
 			System.out.println("■□ 8.만든이");
-			System.out.println("■□ 9.프로그램 종료");
+			System.out.println("■□ 9.로그아웃");
+			System.out.println("■□ 10.프로그램 종료");
 			if(DDBoardMain.session.equals("YES")) {
 				System.out.println("■□ \""+DDBoardMain.userid+"\"님 방문을 환영합니다.");
 			}
@@ -34,10 +35,10 @@ public class DDBoardMain {
 			while(true) {
 				System.out.print("■■ 번호>> ");
 				code = sc.nextInt();
-				if(code >= 0 && code <= 9) {
+				if(code >= 0 && code <= 10) {
 					break;
 				} else {
-					System.out.println("■■ 0~9의 값을 입력하세요.");
+					System.out.println("■■ 0~10의 값을 입력하세요.");
 					continue;
 				}
 			}
@@ -120,6 +121,17 @@ public class DDBoardMain {
 				System.out.println("■■ made by ChoLong02");
 				System.out.println("■■ sentilemon02@gmail.com");
 			} else if(code == 9) {
+				if(DDBoardMain.session.equals("YES")) { // 로그인 -> 로그아웃
+					System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+					System.out.println("■■ "+DDBoardMain.userid+"님 로그아웃 되었습니다.");
+					DDBoardMain.session = "NO";
+					DDBoardMain.userid = "";
+				} else {
+					System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+					System.out.println("■■ 로그인이 필요한 기능입니다.");
+				}
+				
+			} else if(code == 10) {
 				System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
 				System.out.println("■■ [프로그램 종료] ■■");
 				System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
