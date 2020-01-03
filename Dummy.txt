@@ -165,3 +165,43 @@ VALUES(seq_product.NEXTVAL, '스프라이트', '코카콜라', 800, 10);
 
 COMMIT;
 SELECT * FROM tbl_product;
+
+-- 제품 판매 테이블
+DROP TABLE tbl_sale;
+CREATE TABLE tbl_sale(
+    sno NUMBER PRIMARY KEY,
+    sname VARCHAR2(100) NOT NULL,
+    cnt NUMBER NOT NULL,
+    tprice NUMBER NOT NULL,
+    regdate DATE DEFAULT SYSDATE
+);
+
+DROP SEQUENCE seq_sale;
+CREATE SEQUENCE seq_sale
+    START WITH 1
+    INCREMENT BY 1
+    NOCYCLE;
+    
+INSERT INTO tbl_sale(sno, sname, cnt, tprice)
+VALUES(seq_sale.NEXTVAL, '코카콜라', 5, 4500);
+INSERT INTO tbl_sale(sno, sname, cnt, tprice)
+VALUES(seq_sale.NEXTVAL, '스프라이트', 2, 1600);
+INSERT INTO tbl_sale(sno, sname, cnt, tprice)
+VALUES(seq_sale.NEXTVAL, '코카콜라', 3, 2700);
+INSERT INTO tbl_sale(sno, sname, cnt, tprice)
+VALUES(seq_sale.NEXTVAL, '스프라이트', 1, 800);
+INSERT INTO tbl_sale(sno, sname, cnt, tprice)
+VALUES(seq_sale.NEXTVAL, '스프라이트', 5, 4000);
+
+COMMIT;
+SELECT * FROM tbl_sale;
+
+-- 오늘 판매한 제품의 총판매액
+SELECT SUM(tprice) FROM tbl_sale
+WHERE TO_CHAR(regdate,'YYYYMMDD') = TO_CHAR(SYSDATE,'YYYYMMDD');
+
+-- 오늘 판매한 상품의 수량과 총금액
+SELECT sname, SUM(cnt), SUM(tprice) 
+FROM tbl_sale
+WHERE TO_CHAR(regdate,'YYYYMMDD') = TO_CHAR(SYSDATE,'YYYYMMDD')
+GROUP BY sname;
