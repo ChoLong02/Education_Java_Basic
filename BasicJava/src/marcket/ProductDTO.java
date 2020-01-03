@@ -8,18 +8,18 @@ public class ProductDTO {
 	private String company;
 	private int price;
 	private int cnt;
-	private Date date;
+	private Date regdate;
 	
 	public ProductDTO() {}
 
-	public ProductDTO(int pno, String pname, String company, int price, int cnt, Date date) {
+	public ProductDTO(int pno, String pname, String company, int price, int cnt, Date regdate) {
 		super();
 		this.pno = pno;
 		this.pname = pname;
 		this.company = company;
 		this.price = price;
 		this.cnt = cnt;
-		this.date = date;
+		this.regdate = regdate;
 	}
 
 	
@@ -71,18 +71,22 @@ public class ProductDTO {
 		this.cnt = cnt;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	@Override
 	public String toString() {
-		return "ProductDTO [pno=" + pno + ", pname=" + pname + ", company=" + company + ", price=" + price + ", cnt="
-				+ cnt + ", date=" + date + "]";
+		return pno + "\t" + 
+	           pname+ "\t" + 
+			   company + "\t" + 
+	           price + "\t" + 
+			   cnt + "\t" +
+			   regdate;
 	}
 	
 }

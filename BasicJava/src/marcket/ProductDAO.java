@@ -57,7 +57,7 @@ public class ProductDAO {
 		try {
 			result = sqlSession.insert("pdt.insert", pDto);
 			if(result > 0) {
-				System.out.println("▧▨  \""+pDto.getPname()+"\"상품"+pDto.getCnt()+"개를 신규 등록하였습니다.");
+				System.out.println("▧▨  \""+pDto.getPname()+"\"제품"+pDto.getCnt()+"개를 신규 등록하였습니다.");
 			} else {
 				System.out.println("▧▨  [Msg] Error, Contact your admin.");
 			}
@@ -66,5 +66,48 @@ public class ProductDAO {
 		} finally {
 			sqlSession.close();
 		}
+	}
+	
+	// 제품 삭제
+	public void deletePdt(String pname) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		try {
+			result = sqlSession.delete("pdt.delete", pname);
+			if(result > 0) {
+				System.out.println("▧▨  \""+pname+"\"제품을 삭제하였습니다.");
+			} else {
+				System.out.println("▧▨  [Msg] Error, Contact your admin.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	// 제품 전체 조회
+	public void selectPdt() {
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			list = sqlSession.selectList("pdt.select");
+			printList(list);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	public void printList(List<ProductDTO> list) {
+		System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
+		System.out.println("▒▒ 제품번호 \t 제품명 \t 제조사 \t 가격 \t 재고 \t 입고일자 ▒▒");
+		System.out.println("▒▒==================================================================================");
+		for (ProductDTO line : list) {
+			System.out.println("▒▒ "+line.toString());
+		}
+		System.out.println("▒▒==================================================================================");
+		System.out.println("▒▒ 제품은 총 "+list.size()+"개 입니다.");
+		System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
 	}
 }

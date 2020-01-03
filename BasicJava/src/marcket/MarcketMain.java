@@ -35,7 +35,7 @@ public class MarcketMain {
 				System.out.println("▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨");
 				System.out.println("▧▨ 1. 제품 판매");
 				System.out.println("▧▨ 2. 제품 등록&추가");
-				System.out.println("▧▨ 3. 제품 수정");
+				System.out.println("▧▨ 3. 제품 수정") ;
 				System.out.println("▧▨ 4. 제품 삭제");
 				System.out.println("▧▨ 5. 제품 조회");
 				System.out.println("▧▨ 6. 제품 검색");
@@ -82,14 +82,21 @@ public class MarcketMain {
 			} else if(code == 3) {
 				
 			} else if(code == 4) {
-				
+				System.out.println("▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨");
+				System.out.print("▧▨ 삭제할 제품명:");
+				sc.nextLine();
+				String pname = sc.nextLine();
+				pDao.deletePdt(pname);
 			} else if(code == 5) {
-				
+				System.out.println("▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨");
+				System.out.println("▧▨ 등록된 제품 전체를 조회합니다.");
+				pDao.selectPdt();
 			} else if(code == 6) {
 				
 			} else if(code == 7) {
 				
 			} else if(code == 8) {
+				System.out.println("▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨▧▨");
 				System.out.println("▧▨ [Msg] Exit the program.");
 				System.exit(0);
 			} 

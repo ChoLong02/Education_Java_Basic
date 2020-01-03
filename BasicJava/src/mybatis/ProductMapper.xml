@@ -16,4 +16,15 @@
 		SET cnt = cnt + #{cnt}
 		WHERE pname = #{pname}
 	</update>
+	
+	<delete id="delete">
+		DELETE FROM tbl_product
+		WHERE pname = #{pname}
+	</delete>
+	
+	<select id="select" resultType="ProductDTO">
+		SELECT * FROM tbl_product
+		WHERE cnt > 0
+		ORDER BY pno DESC, cnt DESC
+	</select>
 </mapper>
