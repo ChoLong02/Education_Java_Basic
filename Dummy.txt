@@ -1,0 +1,142 @@
+-- 회원 테이블
+DROP TABLE tbl_member;
+CREATE TABLE tbl_member(
+    id VARCHAR2(50) PRIMARY KEY,
+    pw VARCHAR2(30) NOT NULL,
+    name VARCHAR2(100) NOT NULL,
+    phone VARCHAR2(100), 
+    regdate DATE DEFAULT SYSDATE
+);
+
+INSERT INTO tbl_member(id, pw, name, phone)
+VALUES('admin', '1234', 'admin', '01012345678');
+INSERT INTO tbl_member(id, pw, name, phone)
+VALUES('user01', '1234', '체리', '01011112222');
+INSERT INTO tbl_member(id, pw, name, phone)
+VALUES('user02', '1234', '도비', '01034345656');
+
+COMMIT;
+SELECT * FROM tbl_member;
+
+-- 연예인 소속사 테이블
+DROP TABLE tbl_enter;
+CREATE TABLE tbl_enter(
+    ano VARCHAR2(20) PRIMARY KEY, 
+    aname VARCHAR2(50) NOT NULL,  
+    major VARCHAR2(50) NOT NULL,  
+    groupyn VARCHAR2(5) NOT NULL, 
+    groupnm VARCHAR2(100),        
+    sal NUMBER NOT NULL,          
+    regdate DATE DEFAULT SYSDATE
+);
+
+DROT SEQUENCE seq_enter;
+CREATE SEQUENCE seq_enter
+    START WITH 1    
+    INCREMENT BY 1  
+    NOCYCLE;         
+  -- MAXVALUE 20     
+  -- MINVALUE 1     
+  -- CYCLE/NOCYCLE   
+
+INSERT INTO tbl_enter(ano, aname, major, groupyn, groupnm, sal)
+VALUES(seq_enter.NEXTVAL, '다현', '가수', 'y', '트와이스', 9900);
+INSERT INTO tbl_enter(ano, aname, major, groupyn, groupnm, sal)
+VALUES(seq_enter.NEXTVAL, '정연', '가수', 'y', '트와이스', 9300);
+INSERT INTO tbl_enter(ano, aname, major, groupyn, groupnm, sal)
+VALUES(seq_enter.NEXTVAL, '모모', '가수', 'y', '트와이스', 9500);
+INSERT INTO tbl_enter(ano, aname, major, groupyn, groupnm, sal)
+VALUES(seq_enter.NEXTVAL, '유아', '가수', 'y', '오마이걸', 8500);
+INSERT INTO tbl_enter(ano, aname, major, groupyn, groupnm, sal)
+VALUES(seq_enter.NEXTVAL, '아린', '가수', 'y', '오마이걸', 8100);
+
+COMMIT;
+SELECT * FROM tbl_enter;
+
+-- 서점 테이블
+DROP TABLE tbl_book;
+CREATE TABLE tbl_book(
+    bno VARCHAR2(20) PRIMARY KEY, 
+    bname VARCHAR2(100) NOT NULL,   
+    price NUMBER NOT NULL,          
+    company VARCHAR2(100) NOT NULL,
+    writer VARCHAR2(100) NOT NULL, 
+    regdate DATE DEFAULT SYSDATE    
+);
+
+DROP SEQUENCE seq_book;
+CREATE SEQUENCE seq_book
+    START WITH 1
+    INCREMENT BY 1
+    NOCYCLE;
+    
+INSERT INTO tbl_book(bno, bname, price, company, writer)
+VALUES(seq_book.NEXTVAL, 'Do it JAVA', 25000, '이지스퍼블리싱', '박은종');
+INSERT INTO tbl_book(bno, bname, price, company, writer)
+VALUES(seq_book.NEXTVAL, '열혈 JAVA 프로그래밍', 30000, '오렌지미디어', '윤성우');
+INSERT INTO tbl_book(bno, bname, price, company, writer)
+VALUES(seq_book.NEXTVAL, '오라클로 배우는 데이터베이스', 33000, '이지스퍼블리싱', '이지훈');
+
+COMMIT;
+SELECT * FROM tbl_book;
+
+-- 게시판 테이블
+DROP TABLE tbl_board;
+CREATE TABLE tbl_board(
+    bno NUMBER PRIMARY KEY,
+    title VARCHAR2(200) NOT NULL,
+    content VARCHAR2(500) NOT NULL,
+    writer VARCHAR2(100) NOT NULL,
+    viewcnt NUMBER DEFAULT 0,
+    regdate DATE DEFAULT SYSDATE
+);
+
+DROP SEQUENCE seq_board;
+CREATE SEQUENCE seq_board
+    START WITH 1
+    INCREMENT BY 1
+    NOCYCLE;
+
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, 'JAVA가 뭐에요?', 'JAVA가 뭐죠?', '도비');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, '저에게 자유를 주세요', '동비에게도 자유를', '동비');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, '테스트1', '테스트 합니다', 'user01');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, '테스트해요', '테스트한다', 'user02');
+INSERT INTO tbl_board(bno, title, content, writer)
+VALUES(seq_board.NEXTVAL, '개발자가 되고파요', '개발 잘하고싶어요', '개발자꿈나무');
+
+COMMIT;
+SELECT * FROM tbl_board;
+
+-- 은행 테이블 ����
+DROP TABLE tbl_bank;
+CREATE TABLE tbl_bank(
+    bno NUMBER PRIMARY KEY,      ȣ
+    bname VARCHAR2(50) NOT NULL,   
+    pw VARCHAR2(50) NOT NULL,     
+    money NUMBER DEFAULT 0,      
+    regdate DATE DEFAULT SYSDATE
+);
+
+DROP SEQUENCE seq_bank;
+CREATE SEQUENCE seq_bank
+    START WITH 101
+    INCREMENT BY 1
+    NOCYCLE;
+    
+INSERT INTO tbl_bank(bno, bname, pw)
+VALUES(seq_bank.NEXTVAL, '체리', '1234');
+INSERT INTO tbl_bank(bno, bname, pw)
+VALUES(seq_bank.NEXTVAL, '초롱', '1234');
+INSERT INTO tbl_bank(bno, bname, pw)
+VALUES(seq_bank.NEXTVAL, '도비', '1234');
+INSERT INTO tbl_bank(bno, bname, pw)
+VALUES(seq_bank.NEXTVAL, '제리', '1234');
+INSERT INTO tbl_bank(bno, bname, pw)
+VALUES(seq_bank.NEXTVAL, '민꽁', '1234');
+
+COMMIT;
+SELECT * FROM tbl_bank;
