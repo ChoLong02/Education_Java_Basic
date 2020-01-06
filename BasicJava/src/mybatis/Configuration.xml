@@ -6,7 +6,8 @@
   
   <typeAliases>
   	<typeAlias alias="BoardDTO" type="problem.DDBoard.BoardDTO"/>
-  	<typeAlias alias="ProductDTO" type="marcket.ProductDTO"/>
+  	<typeAlias alias="ProductDTO" type="market.ProductDTO"/>
+  	<typeAlias alias="SaleDTO" type="market.SaleDTO"/>
   </typeAliases>
 
   <environments default="development">
@@ -25,6 +26,7 @@
     <mapper resource="mybatis/BoardMapper.xml"/>
     <mapper resource="mybatis/MemberMapper.xml"/>
     <mapper resource="mybatis/ProductMapper.xml"/>
+    <mapper resource="mybatis/SaleMapper.xml"/>
   </mappers>
 </configuration>
 

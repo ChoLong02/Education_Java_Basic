@@ -11,9 +11,14 @@
 		VALUES(seq_product.NEXTVAL, #{pname}, #{company}, #{price}, #{cnt})
 	</insert>
 	
-	<update id="cntplus" parameterType="HashMap">
-		UPDATE tbl_product
-		SET cnt = cnt + #{cnt}
+	<update id="cntchange" parameterType="HashMap">
+		UPDATE tbl_product SET 
+		<if test="flag == 'plus'">
+			cnt = cnt + #{cnt}
+		</if>
+		<if test="flag == 'minus'">
+			cnt = cnt - #{cnt}
+		</if>
 		WHERE pname = #{pname}
 	</update>
 	
@@ -24,7 +29,27 @@
 	
 	<select id="select" resultType="ProductDTO">
 		SELECT * FROM tbl_product
-		WHERE cnt > 0
 		ORDER BY pno DESC, cnt DESC
 	</select>
+	
+	<select id="selectUsePdt" resultType="ProductDTO">
+		SELECT * FROM tbl_product
+		WHERE cnt >= 1
+		ORDER BY pno
+	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
