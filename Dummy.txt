@@ -197,11 +197,11 @@ COMMIT;
 SELECT * FROM tbl_sale;
 
 -- 오늘 판매한 제품의 총판매액
-SELECT SUM(tprice) FROM tbl_sale
+SELECT SUM(tprice) as tprice FROM tbl_sale
 WHERE TO_CHAR(regdate,'YYYYMMDD') = TO_CHAR(SYSDATE,'YYYYMMDD');
 
 -- 오늘 판매한 상품의 수량과 총금액
-SELECT sname, SUM(cnt), SUM(tprice) 
+SELECT sname, SUM(cnt) as cnt, SUM(tprice) as tprice
 FROM tbl_sale
 WHERE TO_CHAR(regdate,'YYYYMMDD') = TO_CHAR(SYSDATE,'YYYYMMDD')
 GROUP BY sname;
