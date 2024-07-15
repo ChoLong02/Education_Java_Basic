@@ -6,6 +6,7 @@ create table tbl_study
 );
 
 
+# 제품 목록
 create table tbl_product
 ( 
     pno       INT auto_increment primary key,
@@ -14,4 +15,15 @@ create table tbl_product
 	 price    INT NOT NULL,
 	 cnt    INT NOT NULL,
 	 regdate   datetime default current_timestamp() null
+);
+
+
+# 제품 판매시 판매 목록을 저장하는 테이블
+create table tbl_sale
+( 
+    sno       INT auto_increment primary key,
+	 sname     VARCHAR(50) NOT NULL,
+	 cnt    INT NOT NULL,
+	 tprice    INT NOT NULL,
+	 date   datetime default current_timestamp() null
 );
