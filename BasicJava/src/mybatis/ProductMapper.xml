@@ -7,8 +7,8 @@
 	</select>
 	
 	<insert id="insert" parameterType="ProductDTO">
-		INSERT INTO tbl_product(pno, pname, company, price, cnt)
-		VALUES(seq_product.NEXTVAL, #{pname}, #{company}, #{price}, #{cnt})
+		INSERT INTO tbl_product(pname, company, price, cnt)
+		VALUES(#{pname}, #{company}, #{price}, #{cnt})
 	</insert>
 	
 	<update id="cntchange" parameterType="HashMap">
@@ -38,7 +38,6 @@
 		ORDER BY pno
 	</select>
 </mapper>
-
 
 
 
