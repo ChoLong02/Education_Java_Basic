@@ -1,2 +1,2 @@
 # Basic_JAVA
-JAVA 학원 수업 내용!
+JAVA 디렉토리가 JDBC+MYBATIS 내용임..
