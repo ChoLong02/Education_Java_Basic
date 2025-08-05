@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pdt">
+	<insert id="insert" parameterType="ProductDTO">
+		INSERT INTO tbl_product(pname, pprice, pcnt)
+		VALUES(#{pname}, #{pprice}, #{pcnt})
+	</insert>
+	
+	<select id="select" resultType="ProductDTO">
+		SELECT * 
+		FROM tbl_product
+		ORDER BY pno DESC, pcnt DESC
+	</select>
+	
+	<select id="search" resultType="ProductDTO">
+		SELECT * 
+		FROM tbl_product
+		WHERE pname = #{keyword}
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM tbl_product
+		WHERE pno = #{pno}
+	</delete>
+	
+	<update id="update" parameterType="ProductDTO">
+		UPDATE tbl_product
+		SET pprice = #{pprice}
+		WHERE pno = #{pno}
+	</update>
+</mapper>
+
+
+
+
+
+
